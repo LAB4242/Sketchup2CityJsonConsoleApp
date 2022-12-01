@@ -1,0 +1,193 @@
+ImageRuntimeVersion: v4.0.30319
+Assembly SketchUpNET, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class SketchUpNET.Color: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Byte, Byte, Byte, Byte): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Byte R : Public
+    Byte G : Public
+    Byte B : Public
+    Byte A : Public
+Class SketchUpNET.Vertex: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Double, Double): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Double, Double, Double): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Double X : Public
+    Double Y : Public
+    Double Z : Public
+Struct SketchUpNET.Utilities: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+Class SketchUpNET.Edge: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(SketchUpNET.Vertex, SketchUpNET.Vertex): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(SketchUpNET.Vertex, SketchUpNET.Vertex, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    SketchUpNET.Vertex Start : Public
+    SketchUpNET.Vertex End : Public
+    System.String Layer : Public
+Class SketchUpNET.Loop: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.Collections.Generic.List`1[SketchUpNET.Edge]): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Collections.Generic.List`1[SketchUpNET.Edge] Edges : Public
+Class SketchUpNET.Vector: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Double, Double, Double): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Double X : Public
+    Double Y : Public
+    Double Z : Public
+Class SketchUpNET.MeshFace: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Int32, Int32, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 A : Public
+    Int32 B : Public
+    Int32 C : Public
+Class SketchUpNET.Mesh: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.Collections.Generic.List`1[SketchUpNET.Vertex], System.Collections.Generic.List`1[SketchUpNET.Vector], System.Collections.Generic.List`1[SketchUpNET.MeshFace], System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Collections.Generic.List`1[SketchUpNET.Vertex] Vertices : Public
+    System.Collections.Generic.List`1[SketchUpNET.Vector] Normals : Public
+    System.Collections.Generic.List`1[SketchUpNET.MeshFace] Faces : Public
+    System.String Layer : Public
+Class SketchUpNET.Texture: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String, SketchUpNET.Color, Boolean, Int32, Int32, Double, Double): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    SketchUpNET.Color Colour : Public
+    System.String Name : Public
+    Double Opacity : Public
+    Boolean useAlpha : Public
+    Int32 Height : Public
+    Int32 Width : Public
+    Double ScaleH : Public
+    Double ScaleW : Public
+Class SketchUpNET.Material: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String, SketchUpNET.Color, Boolean, Double, Boolean, Boolean, SketchUpNET.Texture): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    SketchUpNET.Color Colour : Public
+    System.String Name : Public
+    Double Opacity : Public
+    Boolean UseOpacity : Public
+    Boolean UsesColor : Public
+    Boolean UsesTexture : Public
+    SketchUpNET.Texture MaterialTexture : Public
+  Methods:
+    ToString(): PrivateScope, Public, Virtual, HideBySig
+Class SketchUpNET.Surface: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(SketchUpNET.Loop, System.Collections.Generic.List`1[SketchUpNET.Loop]): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(SketchUpNET.Loop): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(SketchUpNET.Loop, System.Collections.Generic.List`1[SketchUpNET.Loop], SketchUpNET.Vector, Double, System.Collections.Generic.List`1[SketchUpNET.Vertex], SketchUpNET.Mesh, System.String, SketchUpNET.Material, SketchUpNET.Material): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    SketchUpNET.Loop OuterEdges : Public
+    System.Collections.Generic.List`1[SketchUpNET.Loop] InnerEdges : Public
+    System.Collections.Generic.List`1[SketchUpNET.Vertex] Vertices : Public
+    SketchUpNET.Mesh FaceMesh : Public
+    Double Area : Public
+    SketchUpNET.Vector Normal : Public
+    SketchUpNET.Material BackMaterial : Public
+    SketchUpNET.Material FrontMaterial : Public
+    System.String Layer : Public
+Class SketchUpNET.Curve: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.Collections.Generic.List`1[SketchUpNET.Edge], Boolean): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Collections.Generic.List`1[SketchUpNET.Edge] Edges : Public
+    Boolean isArc : Public
+Class SketchUpNET.Transform: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Double[]): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Double[] Data : Public
+    Double Scale : Public
+    Double X : Public
+    Double Y : Public
+    Double Z : Public
+  Methods:
+    GetTransformed(Vertex): PrivateScope, Public, HideBySig
+Class SketchUpNET.Instance: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String, System.String, System.String, SketchUpNET.Transform, System.String, SketchUpNET.Material): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String Name : Public
+    SketchUpNET.Transform Transformation : Public
+    System.String ParentID : Public
+    System.String Guid : Public
+    System.Object Parent : Public
+    System.String Layer : Public
+    SketchUpNET.Material Material : Public
+Class SketchUpNET.Group: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String, System.Collections.Generic.List`1[SketchUpNET.Surface], System.Collections.Generic.List`1[SketchUpNET.Curve], System.Collections.Generic.List`1[SketchUpNET.Edge], System.Collections.Generic.List`1[SketchUpNET.Instance], System.Collections.Generic.List`1[SketchUpNET.Group], SketchUpNET.Transform, System.String, SketchUpNET.Material, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String Name : Public
+    System.Collections.Generic.List`1[SketchUpNET.Surface] Surfaces : Public
+    System.Collections.Generic.List`1[SketchUpNET.Edge] Edges : Public
+    System.Collections.Generic.List`1[SketchUpNET.Curve] Curves : Public
+    System.Collections.Generic.List`1[SketchUpNET.Instance] Instances : Public
+    System.Collections.Generic.List`1[SketchUpNET.Group] Groups : Public
+    SketchUpNET.Transform Transformation : Public
+    SketchUpNET.Material Material : Public
+    System.String Layer : Public
+    System.String Guid : Public
+Class SketchUpNET.Component: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String, System.String, System.Collections.Generic.List`1[SketchUpNET.Surface], System.Collections.Generic.List`1[SketchUpNET.Curve], System.Collections.Generic.List`1[SketchUpNET.Edge], System.Collections.Generic.List`1[SketchUpNET.Instance], System.String, System.Collections.Generic.List`1[SketchUpNET.Group]): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String Name : Public
+    System.String Description : Public
+    System.Collections.Generic.List`1[SketchUpNET.Surface] Surfaces : Public
+    System.Collections.Generic.List`1[SketchUpNET.Instance] Instances : Public
+    System.String Guid : Public
+    System.Collections.Generic.List`1[SketchUpNET.Curve] Curves : Public
+    System.Collections.Generic.List`1[SketchUpNET.Edge] Edges : Public
+    System.Collections.Generic.List`1[SketchUpNET.Group] Groups : Public
+Class SketchUpNET.Layer: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String Name : Public
+Class SketchUpNET.SketchUp: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Collections.Generic.List`1[SketchUpNET.Surface] Surfaces : Public
+    System.Collections.Generic.List`1[SketchUpNET.Layer] Layers : Public
+    System.Collections.Generic.List`1[SketchUpNET.Group] Groups : Public
+    System.Collections.Generic.Dictionary`2[System.String,SketchUpNET.Component] Components : Public
+    System.Collections.Generic.Dictionary`2[System.String,SketchUpNET.Material] Materials : Public
+    System.Collections.Generic.List`1[SketchUpNET.Instance] Instances : Public
+    System.Collections.Generic.List`1[SketchUpNET.Curve] Curves : Public
+    System.Collections.Generic.List`1[SketchUpNET.Edge] Edges : Public
+    Boolean MoreRecentFileVersion : Public
+  Methods:
+    LoadModel(String, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
+    LoadModel(String): PrivateScope, Public, HideBySig
+    SaveAs(String, SKPVersion, String): PrivateScope, Public, HideBySig
+    AppendToModel(String): PrivateScope, Public, HideBySig
+    WriteNewModel(String, SKPVersion): PrivateScope, Public, HideBySig
+    WriteNewModel(String): PrivateScope, Public, HideBySig
+Struct SketchUpNET.SKPVersion: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    SketchUpNET.SKPVersion V2013 = 0 : Public, Static, Literal, HasDefault
+    SketchUpNET.SKPVersion V2014 = 1 : Public, Static, Literal, HasDefault
+    SketchUpNET.SKPVersion V2015 = 2 : Public, Static, Literal, HasDefault
+    SketchUpNET.SKPVersion V2016 = 3 : Public, Static, Literal, HasDefault
+    SketchUpNET.SKPVersion V2017 = 4 : Public, Static, Literal, HasDefault
+    SketchUpNET.SKPVersion V2018 = 5 : Public, Static, Literal, HasDefault
+    SketchUpNET.SKPVersion V2019 = 6 : Public, Static, Literal, HasDefault
+    SketchUpNET.SKPVersion V2020 = 7 : Public, Static, Literal, HasDefault
+    SketchUpNET.SKPVersion V2021 = 8 : Public, Static, Literal, HasDefault

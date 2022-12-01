@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+    <ItemGroup>
+    <Content Include="..\API\SketchUpAPI.dll" Link="SketchUpAPI.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\API\SketchUpCommonPreferences.dll" Link="SketchUpCommonPreferences.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\API\sketchup.lib" Link="sketchup.lib" />
+    <None Include="..\API\SketchUpAPI.lib" Link="SketchUpAPI.lib">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CityJsonLib\CityJsonLib.csproj" />
+    <ProjectReference Include="..\SketchupUtilities\SketchupUtilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SketchUpNET">
+      <HintPath>..\SketchupNetBuild\SketchUpNET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

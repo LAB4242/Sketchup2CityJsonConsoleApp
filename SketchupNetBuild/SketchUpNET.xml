@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        "SketchUpNET"
+    </assembly>
+    <members>
+        <member name="M:SketchUpNET.SketchUp.WriteNewModel(System.String,SketchUpNET.SKPVersion)">
+            <summary>
+Write current SketchUp Model to a new SketchUp file using a specific version.
+</summary>
+            <param name="filename">Path to .skp file</param>
+            <param name="version">SketchUp version</param>
+            <returns />
+        </member>
+        <member name="M:SketchUpNET.SketchUp.WriteNewModel(System.String)">
+            <summary>
+Write current SketchUp Model to a new SketchUp file using the latest version.
+</summary>
+            <param name="filename">Path to .skp file</param>
+            <returns />
+        </member>
+        <member name="M:SketchUpNET.SketchUp.AppendToModel(System.String)">
+            <summary>
+Append current SketchUp Model Data to an existing SketchUp file.
+</summary>
+            <param name="filename">Path to .skp file</param>
+        </member>
+        <member name="M:SketchUpNET.SketchUp.SaveAs(System.String,SketchUpNET.SKPVersion,System.String)">
+            <summary>
+Saves a SketchUp Model from filepath to a new file.
+Use this if you want to convert a SketchUp file to a different format.
+</summary>
+            <param name="filename">Path to original .skp file</param>
+            <param name="version">SketchUp Version to save the new file in</param>
+            <param name="newFilename">Path to new .skp file</param>
+        </member>
+        <member name="M:SketchUpNET.SketchUp.LoadModel(System.String,System.Boolean)">
+            <summary>
+Loads a SketchUp Model from filepath. Optionally load meshed geometries.
+</summary>
+            <param name="filename">Path to .skp file</param>
+            <param name="includeMeshes">Load model including meshed geometries</param>
+        </member>
+        <member name="M:SketchUpNET.SketchUp.LoadModel(System.String)">
+            <summary>
+Loads a SketchUp Model from filepath without loading Meshes.
+Use this if you don't need meshed geometries.
+</summary>
+            <param name="filename">Path to .skp file</param>
+        </member>
+        <member name="F:SketchUpNET.SketchUp.MoreRecentFileVersion">
+            <summary>
+Version of the loaded file is more recent than the SketchUp API
+</summary>
+        </member>
+        <member name="F:SketchUpNET.SketchUp.Edges">
+            <summary>
+Containing Model Edges (Lines)
+</summary>
+        </member>
+        <member name="F:SketchUpNET.SketchUp.Curves">
+            <summary>
+Containing Model Curves (Arcs)
+</summary>
+        </member>
+        <member name="F:SketchUpNET.SketchUp.Instances">
+            <summary>
+Containing Model Component Instances
+</summary>
+        </member>
+        <member name="F:SketchUpNET.SketchUp.Materials">
+            <summary>
+Containing Model Material Definitions
+</summary>
+        </member>
+        <member name="F:SketchUpNET.SketchUp.Components">
+            <summary>
+Containing Model Component Definitions
+</summary>
+        </member>
+        <member name="F:SketchUpNET.SketchUp.Groups">
+            <summary>
+Containing Model Groups
+</summary>
+        </member>
+        <member name="F:SketchUpNET.SketchUp.Layers">
+            <summary>
+Containing Model Layers
+</summary>
+        </member>
+        <member name="F:SketchUpNET.SketchUp.Surfaces">
+            <summary>
+Containing Model Surfaces
+</summary>
+        </member>
+        <member name="T:SketchUpNET.SketchUp">
+            <summary>
+SketchUp Base Class
+</summary>
+        </member>
+        <member name="M:SketchUpNET.Curve.#ctor(System.Collections.Generic.List`1{SketchUpNET.Edge},System.Boolean)">
+            <summary>
+Creates a new curve based on a set of edges
+</summary>
+            <param name="edges">Underlying edges</param>
+            <param name="isarc">Should be interpreted as an arc</param>
+        </member>
+        <member name="F:SketchUpNET.Curve.isArc">
+            <summary>
+Indicates if this curve should be interpreted as an arc
+</summary>
+        </member>
+        <member name="F:SketchUpNET.Curve.Edges">
+            <summary>
+Collection of edges forming the curve
+</summary>
+        </member>
+        <member name="M:SketchUpNET.Surface.#ctor(SketchUpNET.Loop,System.Collections.Generic.List`1{SketchUpNET.Loop})">
+            <summary>
+Creates a new SketchUp Surface or Face from outer and inner edges.
+Make sure all edges of each loop are closed and ordered.
+All lines need to be connected from start- to endpoints,
+the direction, CW or CCW doesn't matter.
+</summary>
+            <param name="outer">Closed loop of outer edges</param>
+            <param name="inner">List of closed loops of inner edges</param>
+        </member>
+        <member name="M:SketchUpNET.Surface.#ctor(SketchUpNET.Loop)">
+            <summary>
+Creates a new SketchUp Surface or Face from outer edges.
+This is the most simple method to create a new surface.
+Make sure the outer edges loop is closed and ordered.
+All lines need to be connected from start- to endpoints,
+the direction, CW or CCW doesn't matter.
+</summary>
+            <param name="outer">Closed loop of outer edges</param>
+        </member>
+        <member name="F:SketchUpNET.Surface.FrontMaterial">
+            <summary>
+Front side material
+</summary>
+        </member>
+        <member name="F:SketchUpNET.Surface.BackMaterial">
+            <summary>
+Back side material
+</summary>
+        </member>
+        <member name="F:SketchUpNET.Surface.Normal">
+            <summary>
+Normal vector of the surface pointing upwards
+</summary>
+        </member>
+        <member name="F:SketchUpNET.Surface.Area">
+            <summary>
+Area of the surface
+</summary>
+        </member>
+        <member name="F:SketchUpNET.Surface.FaceMesh">
+            <summary>
+Meshed surface if read meshes has been activated when opening the model
+</summary>
+        </member>
+        <member name="F:SketchUpNET.Surface.Vertices">
+            <summary>
+All vertices of the surfaces are stored here
+</summary>
+        </member>
+        <member name="F:SketchUpNET.Surface.InnerEdges">
+            <summary>
+List of closed inner loops, representing holes
+</summary>
+        </member>
+        <member name="F:SketchUpNET.Surface.OuterEdges">
+            <summary>
+The outer edges of the surface in a closed loop
+</summary>
+        </member>
+        <member name="M:SketchUpNET.Vector.#ctor(System.Double,System.Double,System.Double)">
+            <summary>
+Creates a new vector
+</summary>
+            <param name="x" />
+            <param name="y" />
+            <param name="z" />
+        </member>
+        <member name="M:SketchUpNET.Edge.#ctor(SketchUpNET.Vertex,SketchUpNET.Vertex)">
+            <summary>
+Creates a new edge by start end endpoint
+</summary>
+            <param name="start">Startpoint</param>
+            <param name="end">Endpoint</param>
+        </member>
+        <member name="M:SketchUpNET.Edge.#ctor(SketchUpNET.Vertex,SketchUpNET.Vertex,System.String)">
+            <summary>
+Creates a new edge by startpoint, endpoint and layer name
+</summary>
+            <param name="start">Startpoint</param>
+            <param name="end">Endpoint</param>
+            <param name="layer">Layername</param>
+        </member>
+        <member name="M:SketchUpNET.Vertex.#ctor(System.Double,System.Double)">
+            <summary>
+Creates a new vertex on z=0
+</summary>
+            <param name="x" />
+            <param name="y" />
+        </member>
+        <member name="M:SketchUpNET.Vertex.#ctor(System.Double,System.Double,System.Double)">
+            <summary>
+Creates a new vertex
+</summary>
+            <param name="x" />
+            <param name="y" />
+            <param name="z" />
+        </member>
+    </members>
+</doc>
