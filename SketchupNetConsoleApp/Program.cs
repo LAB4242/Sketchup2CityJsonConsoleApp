@@ -39,8 +39,6 @@ else
 }
 
 
-SketchUpNET.SketchUp skp = new SketchUpNET.SketchUp();
-
 var surfaceVertices = SketchupUtilities.SketchupUtility.GetSurfaceVerticesFromSketchupFile(srcpath);
 var cityjson = CityJsonUtil.CreateCityJsonFromSurfaces(surfaceVertices);
 
