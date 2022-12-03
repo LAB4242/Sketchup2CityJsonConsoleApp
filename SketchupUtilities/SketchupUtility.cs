@@ -81,7 +81,7 @@ namespace SketchupUtilities
         //public static void ParseGroup(string groupPrefix, SketchUpNET.Group group)
         public static void ParseGroup(Group group, List<Transform> transforms)
         {
-            if (group.Surfaces.Any())
+            if (group.Surfaces.Any() && transforms.Count == 3)
             {
                 //surfaceVertices.Add(GetGroupString(groupPrefix, group), GetSurfaceVertices(group.Surfaces, group.Transformation  ));
                 surfaceVertices.Add($"{surfaceCounter}-group.Name", GetSurfaceVertices(group.Surfaces, transforms));
@@ -94,7 +94,7 @@ namespace SketchupUtilities
                 foreach (var group2 in group.Groups)
                 {
                     List<Transform> transforms2 = new List<Transform>();
-                    transforms2.Concat(transforms);
+                    transforms2.AddRange(transforms);
                     transforms2.Add(group2.Transformation);
 
                     //group2.Transformation.X += group.Transformation.X;
@@ -221,15 +221,17 @@ namespace SketchupUtilities
 
         static Vertex GetTransformedByTransforms(Vertex point, List<Transform> transforms)
         {
-            //transform vertex from  transform hierarchy
-            transforms.Reverse();
+            return transforms.Last().GetTransformed(point);
 
-            foreach(var transform in transforms)
-            {
-                point = GetTransformed(point, transform.Data);
-            }
+            ////transform vertex from  transform hierarchy
+            //transforms.Reverse();
 
-            return point;
+            //foreach(var transform in transforms)
+            //{
+            //    point = GetTransformed(point, transform.Data);
+            //}
+
+            //return point;
         }
         
 
