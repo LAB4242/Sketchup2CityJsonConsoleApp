@@ -24,11 +24,11 @@ namespace SketchupUtilities
             SketchUpNET.SketchUp skp = new SketchUpNET.SketchUp();
             skp.LoadModel(path, false);
 
-            //if (skp.Surfaces.Any())
-            //{
-            //    surfaceVertices.Add($"Surfaces:", GetSurfaceVertices(skp.Surfaces, transformOne));
-            //    surfaceCounter++;
-            //}
+            if (skp.Surfaces.Any())
+            {
+                surfaceVertices.Add($"Surfaces:", GetSurfaceVertices(skp.Surfaces, null));
+                surfaceCounter++;
+            }
 
             //if (skp.Instances.Any())
             //{
@@ -81,12 +81,12 @@ namespace SketchupUtilities
         //public static void ParseGroup(string groupPrefix, SketchUpNET.Group group)
         public static void ParseGroup(Group group, List<Transform> transforms)
         {
-            if (group.Surfaces.Any() && transforms.Count == 3)
-            {
+            //if (group.Surfaces.Any() && transforms.Count == 3)
+            //{                
                 //surfaceVertices.Add(GetGroupString(groupPrefix, group), GetSurfaceVertices(group.Surfaces, group.Transformation  ));
                 surfaceVertices.Add($"{surfaceCounter}-group.Name", GetSurfaceVertices(group.Surfaces, transforms));
                 surfaceCounter++;
-            }
+           // }
 
             if (group.Groups.Any())
             {
@@ -221,19 +221,23 @@ namespace SketchupUtilities
 
         static Vertex GetTransformedByTransforms(Vertex point, List<Transform> transforms)
         {
-            return transforms.Last().GetTransformed(point);
+            //no transform needed
+            if (transforms == null) return point;
 
-            ////transform vertex from  transform hierarchy
+            //return transforms.Last().GetTransformed(point);
+            //return transforms.First().GetTransformed(point);
+
+            //transform vertex from  transform hierarchy
             //transforms.Reverse();
 
-            //foreach(var transform in transforms)
-            //{
-            //    point = GetTransformed(point, transform.Data);
-            //}
+            foreach (var transform in transforms)
+            {
+                point = GetTransformed(point, transform.Data);
+            }
 
-            //return point;
+            return point;
         }
-        
+
 
         static Vertex GetTransformed(Vertex point, double[] Data)
         {

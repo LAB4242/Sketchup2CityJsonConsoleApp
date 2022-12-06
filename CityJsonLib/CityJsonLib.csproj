@@ -8,12 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="3groups.skp" />
     <None Remove="Shed-2019.skp" />
     <None Remove="ShedInner.skp" />
     <None Remove="ShedOuter.skp" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="3groups.skp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Shed-2019.skp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

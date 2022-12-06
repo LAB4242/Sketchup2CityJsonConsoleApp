@@ -28,8 +28,11 @@ if(args.Length > 0)
 }
 else
 {
-    srcpath = Path.Combine(apppath, "Shed-2019.skp");
+    srcpath = Path.Combine(apppath, "3groups.skp");
     dstpath = GetDestinationPath(apppath, srcpath);
+
+    //srcpath = Path.Combine(apppath, "Shed-2019.skp");
+    //dstpath = GetDestinationPath(apppath, srcpath);
 
     //srcpath = Path.Combine(apppath, "ShedOuter.skp");
     //dstpath = GetDestinationPath(apppath, srcpath);
